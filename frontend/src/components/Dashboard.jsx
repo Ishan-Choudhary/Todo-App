@@ -139,7 +139,7 @@ const Dashboard = ({ loggedInFn }) => {
   const handleTaskChange = async (curr) => {
 
     setTodoItems(() => todoItems.map((val, i) => {
-      if (val.title == curr.title) {
+      if (val.title === curr.title) {
         return { ...val, status: !val.status }
       }
       return val
@@ -237,7 +237,7 @@ const Dashboard = ({ loggedInFn }) => {
         </Flex>
         <Flex color="white" width={"100%"} mt={"10"}>
           <Tag size="lg" colorScheme="blue">TODO</Tag>
-          <Spacer />
+          <Spacer /> 
           <Button colorScheme="blue" onClick={addModal.onOpen}>+</Button>
           <Modal onClose={addModal.onClose} isOpen={addModal.isOpen} isCentered>
             <ModalOverlay />
@@ -265,7 +265,7 @@ const Dashboard = ({ loggedInFn }) => {
         {
           todoItems?.map(
             (curr, i) => {
-              if (curr.status === false) {
+              if(curr.status === false) {
                 return (
                   <Flex key={curr.id} width="100%"
                     onMouseEnter={
@@ -307,7 +307,7 @@ const Dashboard = ({ loggedInFn }) => {
           <Tag size="lg" colorScheme="green">COMPLETED</Tag>
         </Flex>
         {todoItems?.map((curr, i) => {
-          if (curr.status == true) {
+          if (curr.status === true) {
             return (
               <Flex key={curr.id} width="100%"
                     onMouseEnter={

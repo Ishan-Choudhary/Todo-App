@@ -4,7 +4,6 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
     Stack,
     Link as ChakraLink,
     Button,
@@ -13,11 +12,11 @@ import {
     Alert,
     AlertIcon,
     AlertTitle,
-    useColorModeValue,
+
   } from '@chakra-ui/react';
 
 
-  import {Navigate, Link as ReactRouterLink} from "react-router-dom";
+  import {Link as ReactRouterLink} from "react-router-dom";
   import { useState } from 'react';
   
   export default function Login({loggedInFn}) {    
@@ -38,7 +37,7 @@ import {
         "username": username
       }
 
-      const tokenReq = await fetch("http://localhost:8000/auth/token/login/", {
+      const tokenReq = await fetch("http://127.0.0.1:8000/auth/token/login/", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(createRequest)
@@ -97,13 +96,7 @@ import {
                 <Input type="password" onChange={handlePasswordChange}/>
               </FormControl>
               <Stack spacing={10}>
-                <Stack
-                  direction={{ base: 'column', sm: 'row' }}
-                  align={'start'}
-                  justify={'space-between'}>
-                  <Checkbox>Remember me</Checkbox>
-                  <ChakraLink color={'blue.400'}>Forgot password?</ChakraLink>
-                </Stack>
+                
                 <Button
                   isLoading={loading}
                   loadingText={"Signing in"}
